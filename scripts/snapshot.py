@@ -28,7 +28,7 @@ def main():
         sys.exit("data/inbox/ 下没有 CSV（期望 data/inbox/<来源>/xxx.csv）")
     DB.parent.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(DB)
-    imported = []
+    imported, warns = [], []
     for f in files:
         table = norm(f.parent.name) + "__" + norm(f.stem)
         with open(f, newline="", encoding="utf-8-sig") as fh:
@@ -42,6 +42,11 @@ def main():
             n = seen.get(c, 0)
             seen[c] = n + 1
             cols.append(c if n == 0 else c + "_" + str(n))
+        prev = [r[1] for r in con.execute('PRAGMA table_info("%s")' % table)]
+        if prev and prev != cols:
+            w = "⚠ 列集变更 %s: 旧%s -> 新%s（平台导出格式可能已变，核对后再答题）" % (table, prev, cols)
+            print(w)
+            warns.append(w)
         con.execute('DROP TABLE IF EXISTS "%s"' % table)
         con.execute('CREATE TABLE "%s" (%s)' % (table, ", ".join('"%s" TEXT' % c for c in cols)))
         ph = ", ".join(["?"] * len(cols))
@@ -63,6 +68,8 @@ def main():
             m.write("\n## %s（%s）\n" % (dest.stem, datetime.date.today()))
             for t, n, src in imported:
                 m.write("- %s: %d 行 <- %s\n" % (t, n, src))
+            for w in warns:
+                m.write("- %s\n" % w)
         print("冻结快照:", dest.relative_to(ROOT), "（简报引用 ID:", dest.stem + "）")
 
 
