@@ -3,7 +3,7 @@
 把品类企划从「按章节写 PPT」改成「按决策问题产出证据链」：
 AI 负责 **数据 → 证据 → 机会 → 候选策略 → 事后验证** 的整条产线，PM 只做取舍，评审会拍板。
 
-设计全文：[docs/design.md](docs/design.md) ｜ 落地路线：[docs/roadmap.md](docs/roadmap.md) ｜ agent 铁律：[CLAUDE.md](CLAUDE.md) ｜ 运行手册：[docs/运行手册.md](docs/运行手册.md) ｜ 萃取任务书重写版：[docs/提示词优化/](docs/提示词优化/README.md)
+设计全文：[docs/design.md](docs/design.md) ｜ 落地路线：[docs/roadmap.md](docs/roadmap.md) ｜ agent 铁律：[CLAUDE.md](CLAUDE.md) ｜ 运行手册：[docs/运行手册.md](docs/运行手册.md) ｜ 萃取任务书重写版：[docs/提示词优化/](docs/提示词优化/README.md) ｜ 网页讲稿：<https://leo-xgxx.github.io/qihua-agent/>
 
 ## 四层结构与目录
 
