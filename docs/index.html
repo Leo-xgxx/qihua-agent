@@ -130,6 +130,9 @@ ul.flat li::before{content:"□"; position:absolute; left:2px; color:var(--accen
 ul.rule{list-style:none; margin:14px 0}
 ul.rule li{padding:8px 0 8px 40px; position:relative; font-size:14.5px; border-bottom:1px dashed var(--line)}
 ul.rule li b.no{position:absolute; left:0; top:8px; font-family:"JetBrains Mono",monospace; color:var(--accent); font-weight:600; font-size:13px}
+.tag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em; padding:2px 8px; border:1px solid; border-radius:2px; white-space:nowrap; vertical-align:2px}
+.tag.real{color:var(--ok); border-color:var(--ok); background:color-mix(in srgb, var(--ok) 10%, transparent)}
+.tag.mock{color:var(--alert); border-color:var(--alert); background:color-mix(in srgb, var(--alert) 10%, transparent)}
 footer{padding:40px 0 64px; color:var(--muted); font-size:13.5px}
 footer .mono{font-size:12px}
 @media (max-width:560px){ .layer{grid-template-columns:1fr} .layer .name{justify-content:flex-start; padding:8px 12px} }
@@ -142,6 +145,7 @@ footer .mono{font-size:12px}
   <a class="item" href="#design">设计</a>
   <a class="item" href="#repo">仓库结构</a>
   <a class="item" href="#proof">实证</a>
+  <a class="item" href="#outputs">产出示例</a>
   <a class="item" href="#gates">纪律与闸</a>
   <a class="item" href="#prompt">提示词优化</a>
   <a class="item" href="#landing">落地</a>
@@ -285,8 +289,109 @@ footer .mono{font-size:12px}
   </div>
 </section>
 
+<section id="outputs">
+  <div class="sec-tag">04 / 产出示例</div>
+  <h2>最终产出长什么样：七种产出物全陈列</h2>
+  <p class="prose">标 <span class="tag real">真实</span> 的直接出自仓库与快照；标 <span class="tag mock">示意</span> 的结构为准、数字为编造占位（真实数据到位后由产线生成）。</p>
+
+  <h3><span class="n">4.1</span>一页决策简报 <span class="tag real">真实 · 全文</span></h3>
+  <div class="brief">
+    <div class="head"><span>briefs/demo/q03-价格带胜负.md</span><span>快照 S-20260824</span><span>状态 草稿（产线演示，不作当季决策依据）</span></div>
+    <div class="sec"><span class="lbl">结论</span>
+      <p>200-300 防守成功：份额 25.5%→30.2%，两季均为段内第一 <span class="cite">[S-20260824 份额表]</span>。300-400 名义第一但正被追击：我 25.6%→24.8%，镖王保罗 15.9%→22.7%，领先差距从 9.7pp 收窄到 2.1pp <span class="cite">[S-20260824 份额表]</span>。400-500 实质失守：我 1.9%→0.12%，九牧王 18.4%→25.12% 坐稳第一 <span class="cite">[S-20260824 份额表]</span>。</p>
+    </div>
+    <div class="sec"><span class="lbl">证据</span>
+      <ul>
+        <li>200-300：龙牙 25.5%（26春企划）→ 30.2%（26秋冬企划），均列段内第一 <span class="cite">[S-20260824 份额表]</span></li>
+        <li>300-400：龙牙 25.6%→24.8%；第二名镖王保罗 15.9%→22.7% <span class="cite">[S-20260824 份额表]</span></li>
+        <li>400-500：龙牙 1.9%→0.12%；九牧王 18.4%→25.12% <span class="cite">[S-20260824 份额表]</span></li>
+        <li>500-600：仅 26春企划有表，龙牙 3.1%（表内第六）；保罗美思得 20.3% 居首 <span class="cite">[S-20260824 份额表]</span></li>
+        <li>100-200：仅 26春企划有表且 TOP5 无龙牙（该表只列头部品牌，我份额未知）（线索）</li>
+      </ul>
+    </div>
+    <div class="sec"><span class="lbl contra">反方</span>
+      <ul>
+        <li>两季统计窗口与渠道口径原文未标注，且金额单位不一致（26春=元、26秋冬=万元），跨季对比可能失真；「春→秋冬」变化也可能只是季节结构差异，不能直接定性为竞品抢份额。</li>
+        <li>「400-500 失守」也可能是主动收缩（历史企划将其列为探索区），失守与战略放弃在数据上同形。</li>
+        <li>数据截至历史企划窗口，只能演示方法，不能支撑 27 季任何决策。</li>
+      </ul>
+    </div>
+    <div class="sec"><span class="lbl">待验证假设</span>
+      <ul>
+        <li>镖王保罗在 300-400 的追击可持续（验证：新导出近 12 周同段份额周序列，同比+环比双口径）</li>
+        <li>400-500 弱势主因是供给缺位而非品牌力（验证：Q4 品牌流入流出 + 双方评论对比）</li>
+      </ul>
+    </div>
+    <div class="sec"><span class="lbl">置信度与缺口</span>
+      <p>置信度：低（历史窗口、口径未标注、单位不一致）。缺口：需新导出各段份额（统一单位与窗口、标注渠道）；100-200 段本品份额；500-600 段秋冬数据。</p>
+    </div>
+  </div>
+
+  <h3><span class="n">4.2</span>机会条目（Q9 输出单元） <span class="tag mock">示意 · 数字编造占位</span></h3>
+<div class="schema"><span class="f">ID:</span> O-27秋冬-1
+<span class="f">名称:</span> 400-500 带再进入
+<span class="f">缺口来源:</span> Q3 结论（该带 1.9%→0.12% 实质失守）× Q5 供给缺口（免烫/抗皱空缺，示意）
+<span class="f">体量测算:</span> 带体量 X 亿 × 目标份额 3% ≈ XXXX 万   <i>← 公式必须给出，无公式不得进清单</i>
+<span class="f">可证伪假设:</span> 战术人群对免烫的支付意愿 ≥ 通勤人群
+<span class="f">验证方式:</span> 小批量 3000 件 ／ 拉新率+退货率 ／ 8 周
+<span class="f">排序依据:</span> 体量大 × 可行性中（品牌力短板）</div>
+
+  <h3><span class="n">4.3</span>策略候选卡（Q10 输出，六字段+预测） <span class="tag mock">示意 · 数字编造占位</span></h3>
+<div class="schema"><b># 策略候选：400-500 带单 IP 试进攻</b>
+机会来源：O-27秋冬-1　　状态：草稿
+<span class="f">1. 目标金额:</span> 带体量 X 亿 × 3% ≈ XXXX 万（附公式）
+<span class="f">2. 前提假设(可证伪):</span> 战术人群对免烫的支付意愿 ≥ 通勤人群
+<span class="f">3. 资源要价:</span> 新开 1 款 + 面料打样 + 直播位 2 周
+<span class="f">4. 主要风险与反方论证:</span> 该带历史尝试未站稳；品牌力短板短期补不齐（引 Q3 反方）
+<span class="f">5. 验证方式:</span> 小批量 3000 件 ／ 拉新率+退货率 ／ 8 周
+<span class="f">6. 定价与价格带落位:</span> 449，落 400-500 进攻带；上市前做 PSM 验证
+<b>可检验预测（必填）:</b> 8 周内进入该带销量 TOP20 且退货率 ≤ 品类均值+3pp，<span class="f">否则停止追单</span>
+<i>→ 评审采纳后登记预测台账；金额承诺待人签</i></div>
+
+  <h3><span class="n">4.4</span>老品复盘卡（Q2 输出，一款一卡） <span class="tag real">真实 · 快照 S-20260824-2</span></h3>
+  <div class="tblwrap"><table>
+    <tr><th>字段</th><th>内容</th></tr>
+    <tr><td>产品名称</td><td>二代龙牙轻骑战术修身长裤加强版（26春企划 s29）</td></tr>
+    <tr><td>三维描述</td><td>修身直筒 - 拉链门襟 - 长裤</td></tr>
+    <tr><td>状态 / 分级</td><td>调（26秋换代） / S1</td></tr>
+    <tr><td>上市 / 售价</td><td>1月中 / 279</td></tr>
+    <tr><td>销售（1月至今）</td><td class="mono">71600（净销量）；1900万（净销额）</td></tr>
+  </table></div>
+  <div class="tblwrap"><table>
+    <tr><th>维度</th><th>畅销 / 不畅销理由</th><th>改善或升级点</th></tr>
+    <tr><td>面料</td><td>畅销：产品力良好，舒适好穿；功能性全面，尺码颜色丰富。不畅销：沾灰、黑色面料光泽强；户外趋势下材料功能性弱渐成短板</td><td>储备开发新面料，走先锋计划</td></tr>
+    <tr><td>卖点</td><td>一年能穿三季；有仿棉质感，抗静电</td><td>升级双面织结构</td></tr>
+    <tr><td>设计、辅料</td><td>产品完成度有提升空间</td><td>裤袢尺寸拉通新规则，后袋唇偏窄</td></tr>
+    <tr><td>技术</td><td>—</td><td>工艺优化手机袋、插手袋、前门襟平服度</td></tr>
+  </table></div>
+  <p class="note">这张卡是从历史企划 PPT 抽取入库的真数据（三季共 16 款已入快照）；未来每季由 AI 按同一模板从销售快照自动生成初稿，PM 只补定性判断。</p>
+
+  <h3><span class="n">4.5</span>规则卡（知识层单元） <span class="tag real">真实 · knowledge/rules/R-202608-3</span></h3>
+  <div class="brief">
+    <div class="head"><span>id R-202608-3</span><span>来源 评审拍板</span><span>失效条件 评审会明示撤销</span></div>
+    <div class="sec"><p><strong>规则：机会未经意向验证（足量样本）不得直接布局多款产品——先一款小批量过闸，再谈铺开。</strong></p>
+    <p>证据：评审否决先例「运动腰头未验证充分机会下布局 2 款产品」被否。溯源《裤子27春企划pdf.pdf》第 46 页（转引）。适用边界：所有新品立项；与铁律第 5 条（样本量红线）联动。</p></div>
+  </div>
+
+  <h3><span class="n">4.6</span>口径条目（事实层单元） <span class="tag real">真实 · facts/koujing/退货率.md</span></h3>
+<div class="schema"><b># 指标：退货率</b>
+<span class="f">定义:</span> 退货占比。
+<span class="f">计算:</span> 件数口径（退货件/发货件）vs 金额口径（退款额/成交额）——<b>待拍板</b>；退货关窗天数——<b>待拍板</b>
+<span class="f">数据源表:</span> 待接入
+<span class="f">版本:</span> v0 草案（2026-08-24）
+<span class="f">变更记录:</span> v0 起草（历史案例：隐腾退货20%被标「优秀」，口径未标注，《26休闲裤夏季企划案.pdf》p13）
+<i>← 「待拍板」点就是首次评审会的议程；口径定死前，相关结论一律带口径注记</i></div>
+
+  <h3><span class="n">4.7</span>策略预测台账（闭环枢纽） <span class="tag mock">示意行</span></h3>
+  <div class="tblwrap"><table>
+    <tr><th>季</th><th>策略</th><th>可检验预测</th><th>不达则动作</th><th>实际</th><th>判定</th><th>沉淀</th></tr>
+    <tr><td class="mono">27秋冬</td><td>400-500 带单 IP 试进攻</td><td>8 周进带内销量 TOP20 且退货 ≤ 均值+3pp</td><td>停止追单</td><td>（季末回填）</td><td class="mono">达成/部分/未达成/无法评估</td><td>达成 → 沉淀规则卡（来源=预测验证）</td></tr>
+  </table></div>
+  <p class="note">台账是闭环的枢纽：策略评审采纳时登记，下季 Q1 第一件事就是逐行对账——复盘从此不再从零写。</p>
+</section>
+
 <section id="gates">
-  <div class="sec-tag">04 / 纪律与机器闸</div>
+  <div class="sec-tag">05 / 纪律与机器闸</div>
   <h2>fail closed：宁可说不知道，不许编</h2>
   <div class="grid4">
     <div class="card"><div class="k">引用强制</div><p>简报中每个数字必须带 <span class="cite">[S-快照 表名]</span>，机器校验，缺引用不出稿。</p></div>
@@ -294,7 +399,7 @@ footer .mono{font-size:12px}
     <div class="card"><div class="k">缺口明说</div><p>快照没有的数据写「缺口：缺什么、从哪导」，禁止补写。</p></div>
     <div class="card"><div class="k">人签底线</div><p>立项与订货金额永远只是建议；分析全自动，拍板永远在人。</p></div>
   </div>
-  <h3><span class="n">4.1</span>机器闸清单（check_brief.py，违规即 exit 1）</h3>
+  <h3><span class="n">5.1</span>机器闸清单（check_brief.py，违规即 exit 1）</h3>
   <div class="tblwrap"><table>
     <tr><th>编号</th><th>检查对象</th><th>规则</th></tr>
     <tr><td class="mono">B1</td><td>简报 结论/证据段</td><td>含数字的行必须带 [S- 快照引用（「线索」行豁免；⟨推断⟩不豁免）</td></tr>
@@ -308,14 +413,14 @@ footer .mono{font-size:12px}
 </section>
 
 <section id="prompt">
-  <div class="sec-tag">05 / 提示词优化</div>
+  <div class="sec-tag">06 / 提示词优化</div>
   <h2>知识萃取任务书：为什么推倒重写</h2>
   <div class="prose">
     <p>原版提示词把萃取定义成「写一份报告」（角色设定 + 背景痛点 + 六个交付物）。报告的结构、粒度、列名由模型现场发挥——<em class="hl">喂不同资料、甚至同资料跑两次，产出结构都会漂移</em>：无法比对、无法合并、无法入库。</p>
     <p>两条修订原则先立住：<strong>① 给 AI 的文档只该有四类内容——纪律、规格、任务定义、事实</strong>；判据一句话：删掉这句话，模型行为会不会变？不变，它就是给人的，分流去人类文档（所以背景与痛点叙事整段移出，压成两行取舍标准）。<strong>② 结构不能由模型决定，由任务书决定</strong>——任务从「写报告」重定义为「按固定 schema 抽取记录」。</p>
   </div>
 
-  <h3><span class="n">5.1</span>重写版的九节结构</h3>
+  <h3><span class="n">6.1</span>重写版的九节结构</h3>
   <div class="tblwrap"><table>
     <tr><th>节</th><th>内容</th><th>性质</th></tr>
     <tr><td class="mono">§0</td><td>任务与取舍：三类输出定取舍、双使用者（新人 PM + AI）定质量标准</td><td>任务定义</td></tr>
@@ -330,7 +435,7 @@ footer .mono{font-size:12px}
     <tr><td class="mono">§9</td><td>严格性条款：禁自创文件/列/枚举，数字原样照抄，禁在记录里发表评论</td><td>纪律</td></tr>
   </table></div>
 
-  <h3><span class="n">5.2</span>记录 schema 长这样（方法记录示例）</h3>
+  <h3><span class="n">6.2</span>记录 schema 长这样（方法记录示例）</h3>
 <div class="schema"><span class="f">ID:</span> M-###            <i>← 编号规则固定：模块词表序 → 首现文档序 → 页码</i>
 <span class="f">名称:</span> ≤20字，动宾结构
 <span class="f">模块:</span> <b>看复盘|看大盘|看市场|看用户|看策略</b>   <i>← 枚举，自创值=违规</i>
@@ -344,7 +449,7 @@ footer .mono{font-size:12px}
 <span class="f">失效条件:</span> …；无则「未定义」
 <span class="f">溯源:</span> 《文件全称》第X页；转引标「转引自：」</div>
 
-  <h3><span class="n">5.3</span>原版问题 → 重写版解法（12 条全量对照）</h3>
+  <h3><span class="n">6.3</span>原版问题 → 重写版解法（12 条全量对照）</h3>
   <div class="tblwrap"><table>
     <tr><th>#</th><th>原版的问题</th><th>重写版的解法</th></tr>
     <tr><td class="mono">0</td><td>报告式交付，结构靠模型发挥，每次漂移</td><td>记录抽取：schema + 词表 + 固定产出文件清单</td></tr>
@@ -361,7 +466,7 @@ footer .mono{font-size:12px}
     <tr><td class="mono">11</td><td>成果属性是四个形容词</td><td>形容词改变不了行为：逐条翻译成可检查条款（入库去向 / 抽卡实测 / 机器可校验 / 五要素齐全）</td></tr>
   </table></div>
 
-  <h3><span class="n">5.4</span>萃取产出直接流进系统（两条路线在此合龙）</h3>
+  <h3><span class="n">6.4</span>萃取产出直接流进系统（两条路线在此合龙）</h3>
   <div class="tblwrap"><table>
     <tr><th>任务书产出</th><th>入库去向</th></tr>
     <tr><td class="mono">01-记录-方法</td><td>作业卡素材，挂接 questions/ 各问的方法字段</td></tr>
@@ -374,14 +479,14 @@ footer .mono{font-size:12px}
 </section>
 
 <section id="landing">
-  <div class="sec-tag">06 / 落地</div>
+  <div class="sec-tag">07 / 落地</div>
   <h2>三步走，最小闭环起步</h2>
   <ol class="steps">
     <li><strong>事实层最小版 + 两个问题</strong>（2–4 周见效）：定每周导出清单 → 首个真实快照 → 答 Q2 调换稳杀 + Q7 抱怨 Top3。验收：PM 不再为这两件事手工找数。</li>
     <li><strong>外部数据 + 机会清单</strong>：竞品 SKU 打标、评论与退货原声结构化 → 答 Q3–Q9，产出第一份机会清单与策略候选集。</li>
     <li><strong>预测闭环</strong>：评审采纳的策略全部登记预测台账 → 下季复盘自动生成。验收：复盘不再从零写。</li>
   </ol>
-  <h3><span class="n">6.1</span>启动前需要拍板的事</h3>
+  <h3><span class="n">7.1</span>启动前需要拍板的事</h3>
   <ul class="flat">
     <li>口径手册 10 条草案的「待拍板」点逐条定死（退货率按件还是按金额、新客怎么定义……）</li>
     <li>9 张种子规则卡首次评审：转正或删</li>
