@@ -1,0 +1,7 @@
+# 品牌方经营数据一律不入 git（且源 pptx 单文件 91MB 超 GitHub 建议上限）
+data/
+facts/facts.db
+facts/snapshots/*.db
+__pycache__/
+*.pyc
+.DS_Store
