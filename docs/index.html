@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>qihua-agent · 品类企划 AI 产线</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{
   --paper:#F1F2ED; --ink:#22271F; --muted:#5D6455; --line:#C8CCBE; --card:#E9EBE2;
@@ -42,8 +42,8 @@ header.hero{border-bottom:2px solid var(--ink); padding:56px 0 40px}
   color:var(--accent); text-transform:uppercase; margin-bottom:18px;
 }
 h1{
-  font-family:"ZCOOL QingKe HuangYou","Noto Sans SC",sans-serif; font-weight:400;
-  font-size:clamp(34px,6vw,56px); line-height:1.22; text-wrap:balance; margin-bottom:18px;
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; font-weight:900;
+  font-size:clamp(31px,5.5vw,50px); line-height:1.3; letter-spacing:.015em; text-wrap:balance; margin-bottom:18px;
 }
 h1 .x{color:var(--alert)}
 .hero-sub{max-width:640px; color:var(--muted); font-size:17px; margin-bottom:26px}
@@ -67,8 +67,8 @@ section{padding:52px 0; border-bottom:1px solid var(--line)}
   color:var(--accent); margin-bottom:10px;
 }
 h2{
-  font-family:"ZCOOL QingKe HuangYou","Noto Sans SC",sans-serif; font-weight:400;
-  font-size:clamp(24px,3.6vw,32px); line-height:1.3; text-wrap:balance; margin-bottom:18px;
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; font-weight:800;
+  font-size:clamp(21px,3.2vw,28px); line-height:1.35; text-wrap:balance; margin-bottom:18px;
 }
 h3{font-size:17px; font-weight:700; margin:26px 0 10px}
 p{margin-bottom:14px}
@@ -283,7 +283,7 @@ footer .mono{font-size:12px}
     <tr><th>#</th><th>原版的问题</th><th>重写版的解法</th></tr>
     <tr><td class="mono">0</td><td>报告式交付，结构靠模型发挥，每次漂移</td><td>记录抽取：schema + 词表 + 固定产出文件清单</td></tr>
     <tr><td class="mono">1</td><td>萃取物不分类，全进一张大表</td><td>四类记录各有 schema，分别流向任务清单 / 规则卡 / 口径手册 / 数据快照</td></tr>
-    <tr><td class="mono">2</td><td>「原文未标注”只标注、不收口</td><td>《待拍板清单》成为固定产出，直接当评审会议程</td></tr>
+    <tr><td class="mono">2</td><td>「原文未标注」只标注、不收口</td><td>《待拍板清单》成为固定产出，直接当评审会议程</td></tr>
     <tr><td class="mono">5</td><td>口径冲突静默取其一</td><td>《口径冲突表》强制并列（实锤案例：金额单位元 vs 万元）</td></tr>
     <tr><td class="mono">8</td><td>无验收方式，质量不可检查</td><td>六条自检，任一不过＝本次萃取不验收</td></tr>
     <tr><td class="mono">9</td><td>一次性任务，新文档来了重做全量</td><td>增量模式：记录 ID 稳定，只交付新增与变更</td></tr>
