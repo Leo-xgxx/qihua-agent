@@ -11,7 +11,6 @@
   --paper:#F1F2ED; --ink:#22271F; --muted:#5D6455; --line:#C8CCBE; --card:#E9EBE2;
   --accent:#56683B; --alert:#D9480F; --ok:#2F7D46; --term-bg:#191D13; --term-ink:#DDE2CF;
 }
-:root:not([data-theme="light"]){}
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --paper:#15180F; --ink:#E7E9DF; --muted:#99A088; --line:#343B29; --card:#1D2216;
@@ -24,6 +23,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
 body{
   background:var(--paper); color:var(--ink);
   font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
@@ -32,145 +32,126 @@ body{
 .mono{font-family:"JetBrains Mono","SFMono-Regular",Consolas,monospace}
 a{color:var(--accent); text-decoration:underline; text-underline-offset:3px}
 a:hover{color:var(--alert)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--alert); outline-offset:2px}
-.shell{max-width:900px; margin:0 auto; padding:0 22px}
-.prose{max-width:720px}
-/* ---- hero ---- */
-header.hero{border-bottom:2px solid var(--ink); padding:56px 0 40px}
-.eyebrow{
-  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.22em;
-  color:var(--accent); text-transform:uppercase; margin-bottom:18px;
+a:focus-visible{outline:2px solid var(--alert); outline-offset:2px}
+.shell{max-width:920px; margin:0 auto; padding:0 22px}
+.prose{max-width:730px}
+/* ---- nav ---- */
+nav{
+  position:sticky; top:0; z-index:9; background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
 }
+nav .in{max-width:920px; margin:0 auto; padding:9px 22px; display:flex; gap:16px; flex-wrap:wrap; align-items:center}
+nav .brand{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.18em; color:var(--ink); text-decoration:none; margin-right:auto}
+nav a.item{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); text-decoration:none}
+nav a.item:hover{color:var(--alert)}
+/* ---- hero ---- */
+header.hero{border-bottom:2px solid var(--ink); padding:52px 0 40px}
+.eyebrow{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.22em; color:var(--accent); text-transform:uppercase; margin-bottom:18px}
 h1{
   font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; font-weight:900;
   font-size:clamp(31px,5.5vw,50px); line-height:1.3; letter-spacing:.015em; text-wrap:balance; margin-bottom:18px;
 }
 h1 .x{color:var(--alert)}
-.hero-sub{max-width:640px; color:var(--muted); font-size:17px; margin-bottom:26px}
-.quote{
-  border-left:3px solid var(--accent); padding:10px 18px; background:var(--card);
-  max-width:640px; font-size:15px; color:var(--ink);
-}
+.hero-sub{max-width:660px; color:var(--muted); font-size:17px; margin-bottom:26px}
+.quote{border-left:3px solid var(--accent); padding:10px 18px; background:var(--card); max-width:660px; font-size:15px}
 .quote .src{display:block; margin-top:6px; font-size:12px; color:var(--muted)}
 .hero-links{margin-top:26px; display:flex; gap:12px; flex-wrap:wrap}
-.btn{
-  display:inline-block; font-family:"JetBrains Mono",monospace; font-size:13px;
-  border:1.5px solid var(--ink); padding:8px 16px; color:var(--ink); text-decoration:none;
-}
+.btn{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:13px; border:1.5px solid var(--ink); padding:8px 16px; color:var(--ink); text-decoration:none}
 .btn:hover{background:var(--ink); color:var(--paper)}
 .btn.primary{background:var(--ink); color:var(--paper)}
 .btn.primary:hover{background:var(--alert); border-color:var(--alert); color:#fff}
 /* ---- sections ---- */
-section{padding:52px 0; border-bottom:1px solid var(--line)}
-.sec-tag{
-  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.2em;
-  color:var(--accent); margin-bottom:10px;
-}
+section{padding:54px 0; border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.2em; color:var(--accent); margin-bottom:10px}
 h2{
   font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif; font-weight:800;
   font-size:clamp(21px,3.2vw,28px); line-height:1.35; text-wrap:balance; margin-bottom:18px;
 }
-h3{font-size:17px; font-weight:700; margin:26px 0 10px}
+h3{font-size:17.5px; font-weight:700; margin:30px 0 10px}
+h3 .n{font-family:"JetBrains Mono",monospace; color:var(--alert); font-size:14px; margin-right:8px}
 p{margin-bottom:14px}
 p.note{color:var(--muted); font-size:14px}
-strong{font-weight:700}
 em.hl{font-style:normal; background:linear-gradient(transparent 62%, color-mix(in srgb, var(--alert) 28%, transparent) 62%)}
 /* ---- cards & grids ---- */
 .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:20px 0}
-.grid4{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:20px 0}
+.grid4{display:grid; grid-template-columns:repeat(auto-fit,minmax(205px,1fr)); gap:14px; margin:20px 0}
 .card{border:1px solid var(--line); background:var(--card); padding:18px 18px 16px}
 .card .k{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.12em; color:var(--accent); margin-bottom:8px}
 .card h4{font-size:16px; font-weight:700; margin-bottom:8px}
 .card p{font-size:14px; color:var(--muted); margin-bottom:0}
 .card.bad{border-left:3px solid var(--muted)}
 .card.good{border-left:3px solid var(--accent)}
-/* ---- layer diagram ---- */
+/* ---- layers / flow ---- */
 .layers{display:flex; flex-direction:column; gap:10px; margin:22px 0}
 .layer{display:grid; grid-template-columns:118px 1fr; border:1px solid var(--line); background:var(--card)}
-.layer .name{
-  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.1em; color:var(--paper);
-  background:var(--accent); display:flex; align-items:center; justify-content:center; padding:12px 8px; text-align:center;
-}
+.layer .name{font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.1em; color:var(--paper); background:var(--accent); display:flex; align-items:center; justify-content:center; padding:12px 8px; text-align:center}
 .layer .body{padding:12px 16px; font-size:14px}
-.layer .body b{font-weight:700}
 .layer .body span{color:var(--muted)}
-.loop{
-  border:1px dashed var(--accent); padding:10px 16px; font-size:13.5px; color:var(--muted);
-  font-family:"JetBrains Mono",monospace;
-}
-/* ---- flow ---- */
+.loop{border:1px dashed var(--accent); padding:10px 16px; font-size:13.5px; color:var(--muted); font-family:"JetBrains Mono",monospace}
 .flow{display:flex; flex-wrap:wrap; align-items:stretch; gap:8px; margin:22px 0}
-.fnode{
-  border:1px solid var(--line); background:var(--card); padding:10px 13px; font-size:13px;
-  min-width:120px; flex:1;
-}
+.fnode{border:1px solid var(--line); background:var(--card); padding:10px 13px; font-size:13px; min-width:120px; flex:1}
 .fnode .t{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.1em; color:var(--accent); display:block; margin-bottom:4px}
 .farrow{align-self:center; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:16px}
 /* ---- tables ---- */
 .tblwrap{overflow-x:auto; margin:20px 0; border:1px solid var(--line)}
 table{border-collapse:collapse; width:100%; font-size:14px; font-variant-numeric:tabular-nums}
-th{
-  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.08em; text-align:left;
-  background:var(--card); color:var(--accent); padding:10px 14px; border-bottom:2px solid var(--line); white-space:nowrap;
-}
+th{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.08em; text-align:left; background:var(--card); color:var(--accent); padding:10px 14px; border-bottom:2px solid var(--line); white-space:nowrap}
 td{padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top}
 tr:last-child td{border-bottom:none}
 td.mono, .cite{font-family:"JetBrains Mono",monospace; font-size:12.5px}
-/* ---- brief excerpt ---- */
-.brief{border:1px solid var(--ink); margin:22px 0; background:var(--card)}
-.brief .head{
-  border-bottom:1px solid var(--line); padding:10px 16px; display:flex; gap:14px; flex-wrap:wrap;
-  font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted);
+/* ---- tree & schema ---- */
+.tree,.schema{
+  font-family:"JetBrains Mono",monospace; font-size:13px; line-height:1.85;
+  background:var(--card); border:1px solid var(--line); padding:18px 20px; overflow-x:auto; margin:20px 0; white-space:pre;
 }
+.tree i,.schema i{font-style:normal; color:var(--muted); font-family:"Noto Sans SC",sans-serif; font-size:12.5px}
+.tree b,.schema b{color:var(--accent); font-weight:600}
+.schema .f{color:var(--alert)}
+/* ---- brief ---- */
+.brief{border:1px solid var(--ink); margin:22px 0; background:var(--card)}
+.brief .head{border-bottom:1px solid var(--line); padding:10px 16px; display:flex; gap:14px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted)}
 .brief .sec{padding:14px 18px; border-bottom:1px solid var(--line)}
 .brief .sec:last-child{border-bottom:none}
 .brief .lbl{font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.15em; color:var(--accent); display:block; margin-bottom:6px}
 .brief .lbl.contra{color:var(--alert)}
-.brief p, .brief li{font-size:14px; margin-bottom:6px}
+.brief p,.brief li{font-size:14px; margin-bottom:6px}
 .brief ul{padding-left:18px}
-.cite{
-  display:inline-block; background:color-mix(in srgb, var(--accent) 14%, transparent);
-  color:var(--accent); padding:0 6px; border-radius:2px; font-size:11px; white-space:nowrap;
-}
+.cite{display:inline-block; background:color-mix(in srgb, var(--accent) 14%, transparent); color:var(--accent); padding:0 6px; border-radius:2px; font-size:11px; white-space:nowrap}
 /* ---- terminal ---- */
-.term{
-  background:var(--term-bg); color:var(--term-ink); font-family:"JetBrains Mono",monospace;
-  font-size:13px; line-height:1.7; padding:18px 20px; overflow-x:auto; margin:22px 0;
-  border-left:4px solid var(--alert);
-}
-.term .cmd{color:#fff}
-.term .viol{color:#FF8A3D}
-.term .okk{color:#8FD19E}
-.term .dim{color:#7E8570}
-/* ---- checklist ---- */
+.term{background:var(--term-bg); color:var(--term-ink); font-family:"JetBrains Mono",monospace; font-size:13px; line-height:1.7; padding:18px 20px; overflow-x:auto; margin:22px 0; border-left:4px solid var(--alert)}
+.term .cmd{color:#fff}.term .viol{color:#FF8A3D}.term .okk{color:#8FD19E}.term .dim{color:#7E8570}
+/* ---- lists ---- */
 ol.steps{counter-reset:s; list-style:none; margin:18px 0}
-ol.steps li{
-  counter-increment:s; padding:12px 0 12px 52px; position:relative; border-bottom:1px dashed var(--line); font-size:15px;
-}
-ol.steps li::before{
-  content:counter(s,decimal-leading-zero); position:absolute; left:0; top:12px;
-  font-family:"JetBrains Mono",monospace; color:var(--alert); font-size:15px; font-weight:600;
-}
+ol.steps li{counter-increment:s; padding:12px 0 12px 52px; position:relative; border-bottom:1px dashed var(--line); font-size:15px}
+ol.steps li::before{content:counter(s,decimal-leading-zero); position:absolute; left:0; top:12px; font-family:"JetBrains Mono",monospace; color:var(--alert); font-size:15px; font-weight:600}
 ul.flat{list-style:none; margin:14px 0}
 ul.flat li{padding:7px 0 7px 26px; position:relative; font-size:15px; border-bottom:1px dashed var(--line)}
 ul.flat li::before{content:"□"; position:absolute; left:2px; color:var(--accent); font-family:"JetBrains Mono",monospace}
-/* ---- footer ---- */
+ul.rule{list-style:none; margin:14px 0}
+ul.rule li{padding:8px 0 8px 40px; position:relative; font-size:14.5px; border-bottom:1px dashed var(--line)}
+ul.rule li b.no{position:absolute; left:0; top:8px; font-family:"JetBrains Mono",monospace; color:var(--accent); font-weight:600; font-size:13px}
 footer{padding:40px 0 64px; color:var(--muted); font-size:13.5px}
 footer .mono{font-size:12px}
-@media (max-width:560px){
-  .layer{grid-template-columns:1fr}
-  .layer .name{justify-content:flex-start; padding:8px 12px}
-}
+@media (max-width:560px){ .layer{grid-template-columns:1fr} .layer .name{justify-content:flex-start; padding:8px 12px} }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<div class="shell">
+<nav><div class="in">
+  <a class="brand" href="#top">QIHUA-AGENT</a>
+  <a class="item" href="#design">设计</a>
+  <a class="item" href="#repo">仓库结构</a>
+  <a class="item" href="#proof">实证</a>
+  <a class="item" href="#gates">纪律与闸</a>
+  <a class="item" href="#prompt">提示词优化</a>
+  <a class="item" href="#landing">落地</a>
+</div></nav>
+<div class="shell" id="top">
 
 <header class="hero">
   <div class="eyebrow">QIHUA-AGENT / 品类企划 AI 产线 / FIELD MANUAL</div>
   <h1>把企划从「写 46 页 PPT」<br>改成「按决策问题产出<span class="x">证据链</span>」</h1>
-  <p class="hero-sub">AI 负责 数据 → 证据 → 机会 → 候选策略 → 事后验证 的整条产线；人保留两件事——取舍与拍板。这一页讲清整套设计，以及配套的萃取任务书为什么要推倒重写。</p>
+  <p class="hero-sub">AI 负责 数据 → 证据 → 机会 → 候选策略 → 事后验证 的整条产线；人保留两件事——取舍与拍板。这一页讲清整套设计、仓库如何承载它，以及配套的萃取任务书为什么要推倒重写。</p>
   <div class="quote">
     「为产品经理快速输出高质量的<strong>市场机会清单、本品复盘结论、用户需求结论</strong>，统一全团队企划输出标准，大幅降低重复找数与低效分析成本。」
     <span class="src">—— 原始需求书的目标句。整套系统就是把这句话做成能跑的东西。</span>
@@ -180,49 +161,100 @@ footer .mono{font-size:12px}
   </div>
 </header>
 
-<section>
-  <div class="sec-tag">01 / 路线之争</div>
-  <h2>同一份历史资料，两条完全不同的路</h2>
+<section id="design">
+  <div class="sec-tag">01 / 整套设计</div>
+  <h2>两个立场判断，推出全部设计</h2>
   <div class="grid2">
-    <div class="card bad">
-      <div class="k">路线 A · 萃取 → 教材 → 人执行</div>
-      <h4>把老方法整理成方法论文档 / SOP，教给下一个人</h4>
-      <p>产物是给人读的报告。方法要写到人能学会，每换一个产品经理重新教一遍；找数、做表、验证仍然靠人力。</p>
-    </div>
-    <div class="card good">
-      <div class="k">路线 B · 萃取 → 系统 → AI 执行</div>
-      <h4>把事实层和闭环建给 AI，方法固化进系统</h4>
-      <p>方法写进十个决策问题和规则卡就固化了，换人不影响执行；找数、分析、初稿、追问全自动，人只审结论、做取舍。</p>
-    </div>
+    <div class="card good"><div class="k">判断一</div><h4>AI 的位置不是「写那份 PPT」</h4><p>PPT 是给评审会看的叙事外壳；工作的本体是回答十几个固定的决策问题。按章节组织（看复盘/看大盘/看市场…）是给人读的方式，按决策问题组织才是给决策用的方式。</p></div>
+    <div class="card good"><div class="k">判断二</div><h4>最贵的痛点靠文档解决不了</h4><p>找数耗人力、需求验证薄弱，这两个最贵的痛点靠「方法论 SOP 教新人」解决不了，靠数据工程 + AI 能解决。功夫的 80% 在事实层，不在提示词。</p></div>
   </div>
-  <div class="prose">
-    <p>本仓库按路线 B 建造，但<strong>路线 A 的萃取成果没有浪费</strong>——它是系统的冷启动物料：9 张规则卡、10 条口径案例、260 行结构化历史数据，全部萃取自五季历史企划案。萃取从「一次性写教材」变成了「持续给系统喂料」。</p>
-  </div>
-</section>
 
-<section>
-  <div class="sec-tag">02 / 系统结构</div>
-  <h2>四层结构，能少则少</h2>
+  <h3><span class="n">1.1</span>路线之争：同一份历史资料，两条路</h3>
+  <div class="grid2">
+    <div class="card bad"><div class="k">路线 A · 萃取 → 教材 → 人执行</div><h4>把老方法整理成 SOP，教给下一个人</h4><p>产物是给人读的报告；每换一个产品经理重新教一遍，找数、做表、验证仍靠人力。</p></div>
+    <div class="card good"><div class="k">路线 B · 萃取 → 系统 → AI 执行</div><h4>把事实层和闭环建给 AI</h4><p>方法固化进十问和规则卡，换人不影响执行；分析、初稿、追问全自动，人只审结论、做取舍。</p></div>
+  </div>
+  <p class="prose">本系统按路线 B 建造，但路线 A 的萃取成果没有浪费——它是冷启动物料：<strong>9 张规则卡、10 条口径案例、260 行结构化历史数据</strong>，全部萃取自五季历史企划案。萃取从「一次性写教材」变成「持续给系统喂料」。</p>
+
+  <h3><span class="n">1.2</span>四层结构（能少则少）</h3>
   <div class="layers">
-    <div class="layer"><div class="name">事实层</div><div class="body"><b>data/inbox → SQLite → 冻结快照 → 口径手册</b><br><span>每周 CSV 导出入库；答题只引用带 ID 的冻结快照，每个数字可复算。功夫的大头在这一层。</span></div></div>
-    <div class="layer"><div class="name">知识层</div><div class="body"><b>规则卡 + 策略预测台账</b><br><span>规则只收两种来源：评审会拍板、预测被验证。每季新增 ≤10 张，失效即删。</span></div></div>
-    <div class="layer"><div class="name">产出层</div><div class="body"><b>十个固定决策问题 → 一页简报</b><br><span>按决策问题组织工作，不按 PPT 章节组织。每问固定 输入 / 方法 / 输出 / 闸门。</span></div></div>
-    <div class="layer"><div class="name">交付层</div><div class="body"><b>简报包 + 策略候选卡 + 随时追问</b><br><span>PM 的工作从「做分析」变成「审结论、做取舍」；对任何数字可以追问「怎么算的」，AI 基于同一快照现查现答。</span></div></div>
+    <div class="layer"><div class="name">事实层</div><div class="body"><b>data/inbox → SQLite → 冻结快照 → 口径手册</b><br><span>每周 CSV 入库；答题只引用带 ID 的冻结快照，每个数字可复算。AI 在这层做它最擅长的活：竞品打标、评论结构化、退货编码——把非结构化市场信息变成可查询的事实。</span></div></div>
+    <div class="layer"><div class="name">知识层</div><div class="body"><b>规则卡 + 策略预测台账</b><br><span>规则常态只收两种来源：评审会拍板、预测被验证；每季新增 ≤10 张，失效即删。刻意做小——不是方法论文档，是少量带失效条件的判断规则。</span></div></div>
+    <div class="layer"><div class="name">产出层</div><div class="body"><b>十个固定决策问题 → 一页简报</b><br><span>企划季启动，AI 对每问跑一遍，产出统一格式简报：结论 / 证据 / 反方 / 待验证假设 / 置信度与缺口。</span></div></div>
+    <div class="layer"><div class="name">交付层</div><div class="body"><b>简报包 + 策略候选卡 + 评审渲染 + 随时追问</b><br><span>PM 的工作从「做分析」变成「审结论、做取舍」。</span></div></div>
   </div>
   <div class="loop">闭环：每条被采纳的策略必须带一条可检验预测 → 登记预测台账 → 下季 Q1 自动对账 → 验证成立的规律沉淀为规则卡</div>
-  <h3>十问对应的正是需求书里的三类输出</h3>
+
+  <h3><span class="n">1.3</span>十个决策问题（产出层的全部工作）</h3>
   <div class="tblwrap"><table>
-    <tr><th>需求书要的输出</th><th>由哪些问题产出</th><th>核心闸门</th></tr>
-    <tr><td><strong>市场机会清单</strong></td><td>Q9 机会清单（Q3–Q8 汇总）</td><td>无体量公式或无可证伪假设的条目不得进清单</td></tr>
-    <tr><td><strong>本品复盘结论</strong></td><td>Q1 策略达成度对账 · Q2 调/换/稳/杀</td><td>S/A 级产品复盘卡 100% 覆盖</td></tr>
-    <tr><td><strong>用户需求结论</strong></td><td>Q7 抱怨 Top3 · Q8 付费 vs 口头需求</td><td>样本量红线：N&lt;200 一律降级为「线索」</td></tr>
+    <tr><th>#</th><th>决策问题</th><th>方法（一句话）</th><th>闸门</th></tr>
+    <tr><td class="mono">Q1</td><td>上季每条策略兑现了没有？根因？</td><td>预测台账逐条对账，偏差做根因四分（产品/供给/流量/定价）</td><td>每条必须有判定</td></tr>
+    <tr><td class="mono">Q2</td><td>在售 SKU 该调 / 换 / 稳 / 杀？</td><td>口径阈值分级 + 六维复盘卡（一款一卡）</td><td>S/A 级 100% 覆盖</td></tr>
+    <tr><td class="mono">Q3</td><td>各价格带在赢还是在输？输给谁？</td><td>防守/进攻/探索三区标注 + 份额变化归因</td><td>—</td></tr>
+    <tr><td class="mono">Q4</td><td>用户不买我们时买了谁、为什么？</td><td>流出竞品 × 双方评论主题对比</td><td>—</td></tr>
+    <tr><td class="mono">Q5</td><td>市场出现了哪些我们没有的供给？</td><td>竞品 SKU 打标 × 本品结构差集</td><td>—</td></tr>
+    <tr><td class="mono">Q6</td><td>下季需求怎么切换、主推怎么排？</td><td>搜索词切换点识别 + 在册节奏规则卡</td><td>—</td></tr>
+    <tr><td class="mono">Q7</td><td>抱怨最集中且最伤钱的三个问题？</td><td>评论主题 × 频次 × 销量加权 × 退货损失</td><td>附损失公式</td></tr>
+    <tr><td class="mono">Q8</td><td>哪些是付费需求，哪些只是口头需求？</td><td>十分制评分 + 声量 vs 成交交叉分层</td><td>N&lt;200 一律标「线索」</td></tr>
+    <tr><td class="mono">Q9</td><td>机会清单：多大、假设是什么、怎么验证？</td><td>缺口 × 体量 × 可行性，逐条 O-编号</td><td>无体量公式或无假设不得进清单</td></tr>
+    <tr><td class="mono">Q10</td><td>候选策略集</td><td>每机会 2–3 候选（含「不做」）+ 反方论证</td><td>无可检验预测不得提交评审</td></tr>
   </table></div>
+  <p class="note">对应关系：<strong>市场机会清单 = Q9；本品复盘结论 = Q1+Q2；用户需求结论 = Q7+Q8</strong>——正好是需求书要的三类输出。另有 8 个行业对标方法（KANO / PSM / 联合分析 / JTBD / AB 测试…）登记在册、按需启用，不做方法货架。</p>
+
+  <h3><span class="n">1.4</span>「AI 做策略」的具体做法</h3>
+  <div class="prose">
+    <p>策略 = 机会 × 打法 × 资源承诺。AI 不自由发挥，走三步：① 从机会清单出发，每个机会生成 2–3 个候选打法（<strong>必须含「不做」选项</strong>）；② 每个候选强制填六字段——目标金额（附测算公式）/ 可证伪假设 / 资源要价 / 主要风险与反方论证 / 验证方式 / 定价与价格带落位；③ AI 先自己找证据反驳自己，再交人取舍。</p>
+    <p>全系统最关键的一条纪律：<em class="hl">每条被采纳的策略必须带一条可检验预测</em>。例：「直筒版上市 8 周内拿到该系列销量 20%±5%，否则停止追单」。这一条同时买到三样东西：策略从形容词变成数字；下季复盘全自动生成；预测被验证的规律自动沉淀成规则卡。闭环靠它转。</p>
+  </div>
+
+  <h3><span class="n">1.5</span>PM 按季拿到的四样东西</h3>
+  <div class="grid4">
+    <div class="card"><div class="k">季启动包</div><p>十问各一页简报 + 老品调换稳杀初稿 + 机会清单。</p></div>
+    <div class="card"><div class="k">策略候选工作台</div><p>六字段候选卡，PM 删改选择后进评审。</p></div>
+    <div class="card"><div class="k">一键渲染评审稿</div><p>评审要 PPT 就渲染成 PPT；否决与质询记录回收进下季知识层。</p></div>
+    <div class="card"><div class="k">随时追问</div><p>「这个数怎么算的 / 换口径 / 给明细」，AI 基于同一快照现查现答——消灭重复找数的真解法。</p></div>
+  </div>
 </section>
 
-<section>
+<section id="repo">
+  <div class="sec-tag">02 / 仓库结构</div>
+  <h2>仓库本身就是接口：四层各有其位</h2>
+  <p class="prose">没有服务、没有 API、不需要部署。任何「能读文件 + 能执行命令」的 agent 型 AI 进入仓库根目录即可干活：Claude Code 自动读 CLAUDE.md，Codex 系自动读 AGENTS.md。</p>
+<div class="tree">qihua-agent/
+├── <b>CLAUDE.md · AGENTS.md</b>      <i>← agent 工作铁律 13 条（取数/结论分级/产出/知识层/风格）</i>
+├── <b>questions/</b>
+│   ├── questions.md          <i>← 十个决策问题（输入 / 方法 / 输出 / 闸门）</i>
+│   └── 可选方法.md            <i>← 8 个行业对标方法登记，按需启用</i>
+├── <b>facts/</b>                    <i>事实层</i>
+│   ├── koujing/              <i>← 口径手册：一指标一文件，分歧点标「待拍板」</i>
+│   └── snapshots/            <i>← 冻结快照 S-日期.db + manifest 登记</i>
+├── <b>data/</b>                     <i>业务数据区（不入 git）</i>
+│   ├── inbox/&lt;来源&gt;/         <i>← 每周导出 CSV 进件目录，文件名即表名</i>
+│   └── raw/                  <i>← 源企划文档（pptx / pdf）</i>
+├── <b>knowledge/</b>                <i>知识层</i>
+│   ├── rules/                <i>← 规则卡 R-年月-n：来源三枚举，失效即删</i>
+│   └── predictions.md        <i>← 策略预测台账（闭环枢纽）</i>
+├── <b>briefs/</b>&lt;季&gt;/             <i>← 产出简报 qNN-slug.md（demo/ 为产线演示）</i>
+├── <b>templates/</b>                <i>← 简报 / 策略卡 / 机会条目 / 复盘卡 / 市调卡 / 规则卡 / 口径条目</i>
+├── <b>scripts/</b>
+│   ├── snapshot.py           <i>← inbox→库→冻结快照；列集漂移自动告警</i>
+│   ├── q.py                  <i>← 只读查快照（SQL / --tables）</i>
+│   ├── check_brief.py        <i>← 正确性闸：简报 / 策略卡 / 规则卡</i>
+│   └── extract_history.py    <i>← 历史 PPT 表格抽取（冷启动）</i>
+└── <b>docs/</b>                     <i>← 设计全文 / 落地路线 / 运行手册 / 提示词优化 / 需求原件</i></div>
+  <h3><span class="n">2.1</span>铁律 13 条（CLAUDE.md，给 AI 的全部行为约束）</h3>
+  <div class="grid2">
+    <div class="card"><div class="k">取数 1–4</div><p>只查冻结快照，禁止用记忆里的行业数字；每个数字带 <span class="cite">[S-快照 表名]</span> 引用；指标一律按口径手册算，没口径先建条目；快照没有的数据写「缺口」，不猜不补。</p></div>
+    <div class="card"><div class="k">结论分级 5–6</div><p>样本量红线分级（占比 N≥200 / 评分对比 ≥300 / 立项闸门 ≥300 且含未购配额），不达线降级「线索」；结论三态——事实（默认）/ 推断（句尾 ⟨推断⟩，引用义务不变）/ 假设（只进待验证段）。</p></div>
+    <div class="card"><div class="k">产出 7–10</div><p>一题一页入 briefs/&lt;季&gt;/；策略卡六字段缺一不可且必带可检验预测；采纳的策略登记预测台账；立项/订货金额永远「待人签」。</p></div>
+    <div class="card"><div class="k">知识层与风格 11–13</div><p>规则卡来源三枚举、每季 ≤10 张、失效即删；答题前全量读规则卡；语言直白不用隐喻行话，每页必须有反方段。</p></div>
+  </div>
+</section>
+
+<section id="proof">
   <div class="sec-tag">03 / 实证</div>
   <h2>这条产线已经真跑通了一次</h2>
-  <p class="prose">用五季历史企划案当数据源，完整走了一遍产线——不是概念演示，每一步都有产物留在仓库里：</p>
+  <p class="prose">用五季历史企划案当数据源完整走了一遍——不是概念演示，每一步的产物都留在仓库里：</p>
   <div class="flow">
     <div class="fnode"><span class="t">SOURCE</span>历史企划 PPT（表格页）</div><div class="farrow">→</div>
     <div class="fnode"><span class="t">EXTRACT</span>脚本抽表：份额 43 行 + 复盘卡 217 行</div><div class="farrow">→</div>
@@ -237,13 +269,12 @@ footer .mono{font-size:12px}
     </div>
     <div class="sec"><span class="lbl contra">反方（模板强制，不许空）</span>
       <ul>
-        <li>两季金额单位不一致（一季用元、一季用万元），跨季对比可能失真——这个坑就是产线自己抓出来的，已进口径手册；</li>
+        <li>两季金额单位不一致（一季用元、一季用万元），跨季对比可能失真——这个坑是产线自己抓出来的，已进口径手册；</li>
         <li>「失守」也可能是主动收缩，与战略放弃在数据上同形，需新数据定性。</li>
       </ul>
     </div>
   </div>
-  <h3>最关键的一幕：AI 编数字，出不了稿</h3>
-  <p class="prose">给校验闸喂三份故意写坏的稿子——数字没带引用、样本量不够没标线索、策略卡缺字段、规则卡来源乱写——当场全部抓出：</p>
+  <h3><span class="n">3.1</span>最关键的一幕：AI 编数字，出不了稿</h3>
   <div class="term">
 <span class="dim">$</span> <span class="cmd">python3 scripts/check_brief.py briefs/_t</span>
 <span class="viol">R-888888-1.md:  R1 来源非枚举值: 我觉得对</span>
@@ -254,51 +285,103 @@ footer .mono{font-size:12px}
   </div>
 </section>
 
-<section>
-  <div class="sec-tag">04 / 纪律</div>
+<section id="gates">
+  <div class="sec-tag">04 / 纪律与机器闸</div>
   <h2>fail closed：宁可说不知道，不许编</h2>
   <div class="grid4">
-    <div class="card"><div class="k">引用强制</div><p>简报中每个数字必须带 <span class="cite">[S-快照 表名]</span> 引用，机器校验，缺引用不出稿。</p></div>
-    <div class="card"><div class="k">样本红线</div><p>占比类 N≥200、立项类 N≥300 且含未购人群配额；不达线一律降级「线索」，线索不得支撑策略。</p></div>
-    <div class="card"><div class="k">缺口明说</div><p>快照里没有的数据，写「缺口：缺什么、从哪导」，禁止补写、禁止猜。</p></div>
-    <div class="card"><div class="k">人签底线</div><p>立项与订货金额永远只是建议，落款「待人签」；分析全自动，拍板永远在人。</p></div>
+    <div class="card"><div class="k">引用强制</div><p>简报中每个数字必须带 <span class="cite">[S-快照 表名]</span>，机器校验，缺引用不出稿。</p></div>
+    <div class="card"><div class="k">样本红线</div><p>不达线一律降级「线索」，线索不得支撑策略卡。</p></div>
+    <div class="card"><div class="k">缺口明说</div><p>快照没有的数据写「缺口：缺什么、从哪导」，禁止补写。</p></div>
+    <div class="card"><div class="k">人签底线</div><p>立项与订货金额永远只是建议；分析全自动，拍板永远在人。</p></div>
   </div>
+  <h3><span class="n">4.1</span>机器闸清单（check_brief.py，违规即 exit 1）</h3>
+  <div class="tblwrap"><table>
+    <tr><th>编号</th><th>检查对象</th><th>规则</th></tr>
+    <tr><td class="mono">B1</td><td>简报 结论/证据段</td><td>含数字的行必须带 [S- 快照引用（「线索」行豁免；⟨推断⟩不豁免）</td></tr>
+    <tr><td class="mono">B2</td><td>简报</td><td>「反方」段必须存在且有实际内容</td></tr>
+    <tr><td class="mono">B3</td><td>简报</td><td>快照字段必须已填（S-8位日期）</td></tr>
+    <tr><td class="mono">B4</td><td>策略卡</td><td>六字段行齐全且非占位；可检验预测、机会来源（O-编号）非占位</td></tr>
+    <tr><td class="mono">B5</td><td>简报</td><td>样本量 N&lt;200 的行必须标「线索」（机器兜 200 下限）</td></tr>
+    <tr><td class="mono">R1–R3</td><td>规则卡</td><td>来源必须为三枚举之一；id 与文件名一致；失效条件非空</td></tr>
+  </table></div>
+  <p class="note">数据层还有一道防护：平台哪天改了导出列名，snapshot.py 对比上次同表列集，变更打 ⚠ 并记入 manifest——不会静默坏掉下游。</p>
 </section>
 
-<section>
-  <div class="sec-tag">05 / 任务书重写</div>
-  <h2>萃取提示词为什么要推倒重写</h2>
+<section id="prompt">
+  <div class="sec-tag">05 / 提示词优化</div>
+  <h2>知识萃取任务书：为什么推倒重写</h2>
   <div class="prose">
-    <p>原版提示词把萃取定义成「写一份报告」。报告的结构、粒度、列名由模型现场发挥——<em class="hl">喂不同资料、甚至同资料跑两次，产出结构都会漂移</em>，无法比对、无法合并、无法入库。</p>
-    <p>重写版把任务重新定义为「<strong>按固定 schema 抽取记录</strong>」：结构不再由模型决定，由任务书决定。给 AI 的文档只该有四类内容——纪律、规格、任务定义、事实；判据一句话：<strong>删掉这句话，模型行为会不会变？不变，它就是给人的，分流去人类文档。</strong></p>
+    <p>原版提示词把萃取定义成「写一份报告」（角色设定 + 背景痛点 + 六个交付物）。报告的结构、粒度、列名由模型现场发挥——<em class="hl">喂不同资料、甚至同资料跑两次，产出结构都会漂移</em>：无法比对、无法合并、无法入库。</p>
+    <p>两条修订原则先立住：<strong>① 给 AI 的文档只该有四类内容——纪律、规格、任务定义、事实</strong>；判据一句话：删掉这句话，模型行为会不会变？不变，它就是给人的，分流去人类文档（所以背景与痛点叙事整段移出，压成两行取舍标准）。<strong>② 结构不能由模型决定，由任务书决定</strong>——任务从「写报告」重定义为「按固定 schema 抽取记录」。</p>
   </div>
-  <div class="grid4">
-    <div class="card"><div class="k">① 记录 SCHEMA</div><p>方法 / 规则 / 口径 / 事实四类记录逐字段定义，字段顺序、空值写法全部写死。</p></div>
-    <div class="card"><div class="k">② 固定词表</div><p>所有分类字段只许用枚举值，自创值＝违规；装不进词表的进备注并上报。</p></div>
-    <div class="card"><div class="k">③ 判定规则</div><p>粒度、跨文档合并、口径冲突、图片页、转引、字段漂移——每个裁量点都有判据。</p></div>
-    <div class="card"><div class="k">④ 自检闸</div><p>六条机器式检查（计数、字段、溯源、冲突、绑定、逐页覆盖），任一不过不得交付。</p></div>
-  </div>
+
+  <h3><span class="n">5.1</span>重写版的九节结构</h3>
+  <div class="tblwrap"><table>
+    <tr><th>节</th><th>内容</th><th>性质</th></tr>
+    <tr><td class="mono">§0</td><td>任务与取舍：三类输出定取舍、双使用者（新人 PM + AI）定质量标准</td><td>任务定义</td></tr>
+    <tr><td class="mono">§1</td><td>输入清单核对：缺一即停，不得跳过继续</td><td>纪律</td></tr>
+    <tr><td class="mono">§2</td><td>固定产出清单：00-处理日志 ～ 07-统计与自检，共 8 件，禁止增删</td><td>规格</td></tr>
+    <tr><td class="mono">§3</td><td>四类记录 schema：方法 M-### / 规则 R-### / 口径 K-### / 事实 CSV，逐字段定义</td><td>规格</td></tr>
+    <tr><td class="mono">§4</td><td>固定词表：所有分类字段只许用枚举值，自创值＝违规</td><td>规格</td></tr>
+    <tr><td class="mono">§5</td><td>处理流程八步，顺序固定</td><td>任务定义</td></tr>
+    <tr><td class="mono">§6</td><td>判定规则：粒度、跨文档合并、口径冲突、图片页、转引、字段漂移——每个裁量点给判据</td><td>纪律</td></tr>
+    <tr><td class="mono">§7</td><td>增量模式：记录 ID 稳定，只交付新增与变更</td><td>规格</td></tr>
+    <tr><td class="mono">§8</td><td>自检六条：计数、字段、溯源、冲突、绑定、逐页覆盖——任一不过不得交付</td><td>闸门</td></tr>
+    <tr><td class="mono">§9</td><td>严格性条款：禁自创文件/列/枚举，数字原样照抄，禁在记录里发表评论</td><td>纪律</td></tr>
+  </table></div>
+
+  <h3><span class="n">5.2</span>记录 schema 长这样（方法记录示例）</h3>
+<div class="schema"><span class="f">ID:</span> M-###            <i>← 编号规则固定：模块词表序 → 首现文档序 → 页码</i>
+<span class="f">名称:</span> ≤20字，动宾结构
+<span class="f">模块:</span> <b>看复盘|看大盘|看市场|看用户|看策略</b>   <i>← 枚举，自创值=违规</i>
+<span class="f">目标输出:</span> <b>机会清单|复盘结论|需求结论</b>（至少一项）
+<span class="f">输入数据:</span> 数据源+字段；缺则写「原文未标注」   <i>← 空值写法也是词表的一部分</i>
+<span class="f">操作步骤:</span> 编号列表，每步一句
+<span class="f">判断标准:</span> 阈值/公式；缺则「原文未标注」
+<span class="f">产出物:</span> 表/图/结论的具体形态
+<span class="f">复用分级:</span> <b>★|◆|○</b>（★=≥3份文档且有产出证据）
+<span class="f">完整性:</span> <b>完整|不完整</b>（五要素缺任一即「不完整」）
+<span class="f">失效条件:</span> …；无则「未定义」
+<span class="f">溯源:</span> 《文件全称》第X页；转引标「转引自：」</div>
+
+  <h3><span class="n">5.3</span>原版问题 → 重写版解法（12 条全量对照）</h3>
   <div class="tblwrap"><table>
     <tr><th>#</th><th>原版的问题</th><th>重写版的解法</th></tr>
     <tr><td class="mono">0</td><td>报告式交付，结构靠模型发挥，每次漂移</td><td>记录抽取：schema + 词表 + 固定产出文件清单</td></tr>
-    <tr><td class="mono">1</td><td>萃取物不分类，全进一张大表</td><td>四类记录各有 schema，分别流向任务清单 / 规则卡 / 口径手册 / 数据快照</td></tr>
+    <tr><td class="mono">1</td><td>萃取物不分类，全进一张大表</td><td>四类记录各有 schema，分别流向 任务清单 / 规则卡 / 口径手册 / 数据快照</td></tr>
     <tr><td class="mono">2</td><td>「原文未标注」只标注、不收口</td><td>《待拍板清单》成为固定产出，直接当评审会议程</td></tr>
-    <tr><td class="mono">5</td><td>口径冲突静默取其一</td><td>《口径冲突表》强制并列（实锤案例：金额单位元 vs 万元）</td></tr>
-    <tr><td class="mono">8</td><td>无验收方式，质量不可检查</td><td>六条自检，任一不过＝本次萃取不验收</td></tr>
+    <tr><td class="mono">3</td><td>对标方法只要求「引入」，无绑定约束</td><td>三项绑定硬约束：诊断缺口编号 + 使用场景 + 启用前置条件，缺一不得入表</td></tr>
+    <tr><td class="mono">4</td><td>无转引规则</td><td>引用不在手头的文档必须标「转引自：」，不得伪装直接溯源</td></tr>
+    <tr><td class="mono">5</td><td>口径冲突静默取其一</td><td>《口径冲突表》强制并列（实锤案例：金额单位 元 vs 万元）</td></tr>
+    <tr><td class="mono">6</td><td>无字段漂移处理</td><td>标准名取并集 + 漂移映射入备注（实锤案例：复盘卡维度名各季不同）</td></tr>
+    <tr><td class="mono">7</td><td>表格数据只转述不抽取</td><td>《结构化数据表》强制 CSV 长表、逐行带文档+页码（实践：260 行已验证可行）</td></tr>
+    <tr><td class="mono">8</td><td>无验收方式，萃取质量不可检查</td><td>六条自检，任一不过＝本次萃取不验收</td></tr>
     <tr><td class="mono">9</td><td>一次性任务，新文档来了重做全量</td><td>增量模式：记录 ID 稳定，只交付新增与变更</td></tr>
+    <tr><td class="mono">10</td><td>背景与痛点叙事写进 prompt</td><td>叙事是给人对齐的立项故事，对模型是弱信号且易引偏；压成两行取舍标准，完整背景留人类文档</td></tr>
+    <tr><td class="mono">11</td><td>成果属性是四个形容词</td><td>形容词改变不了行为：逐条翻译成可检查条款（入库去向 / 抽卡实测 / 机器可校验 / 五要素齐全）</td></tr>
   </table></div>
-  <p class="note">任务书全文与 12 点对照：<a href="https://github.com/Leo-xgxx/qihua-agent/tree/main/docs/%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BC%98%E5%8C%96">docs/提示词优化/</a>。诚实边界：提示词能钉死结构，字段内文字仍有微差；彻底钉死靠产出后的机器校验器（与本仓 check_brief 同款思路）。</p>
+
+  <h3><span class="n">5.4</span>萃取产出直接流进系统（两条路线在此合龙）</h3>
+  <div class="tblwrap"><table>
+    <tr><th>任务书产出</th><th>入库去向</th></tr>
+    <tr><td class="mono">01-记录-方法</td><td>作业卡素材，挂接 questions/ 各问的方法字段</td></tr>
+    <tr><td class="mono">02-记录-规则</td><td>knowledge/rules/ 规则卡（过评审后转正）</td></tr>
+    <tr><td class="mono">03-记录-口径</td><td>facts/koujing/ 口径手册</td></tr>
+    <tr><td class="mono">04-数据表</td><td>data/inbox/history/ → 冻结快照</td></tr>
+    <tr><td class="mono">07-待拍板清单</td><td>评审会议程</td></tr>
+  </table></div>
+  <p class="note">全文见 <a href="https://github.com/Leo-xgxx/qihua-agent/tree/main/docs/%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%BC%98%E5%8C%96">docs/提示词优化/</a>（任务书全文 + 12 点对照）。诚实边界：提示词能钉死结构，字段内文字仍有微差；彻底钉死靠产出后的机器校验器——与本仓 check_brief 同款思路。</p>
 </section>
 
-<section>
+<section id="landing">
   <div class="sec-tag">06 / 落地</div>
   <h2>三步走，最小闭环起步</h2>
   <ol class="steps">
-    <li><strong>事实层最小版 + 两个问题</strong>（2–4 周见效）：定每周导出清单 → 首个真实快照 → 答 Q2 调换稳杀 + Q7 抱怨 Top3。验收标准：PM 不再为这两件事手工找数。</li>
+    <li><strong>事实层最小版 + 两个问题</strong>（2–4 周见效）：定每周导出清单 → 首个真实快照 → 答 Q2 调换稳杀 + Q7 抱怨 Top3。验收：PM 不再为这两件事手工找数。</li>
     <li><strong>外部数据 + 机会清单</strong>：竞品 SKU 打标、评论与退货原声结构化 → 答 Q3–Q9，产出第一份机会清单与策略候选集。</li>
-    <li><strong>预测闭环</strong>：评审采纳的策略全部登记预测台账 → 下季复盘自动生成。验收标准：复盘不再从零写。</li>
+    <li><strong>预测闭环</strong>：评审采纳的策略全部登记预测台账 → 下季复盘自动生成。验收：复盘不再从零写。</li>
   </ol>
-  <h3>启动前需要拍板的事</h3>
+  <h3><span class="n">6.1</span>启动前需要拍板的事</h3>
   <ul class="flat">
     <li>口径手册 10 条草案的「待拍板」点逐条定死（退货率按件还是按金额、新客怎么定义……）</li>
     <li>9 张种子规则卡首次评审：转正或删</li>
