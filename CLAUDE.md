@@ -4,7 +4,7 @@
 产线原则：**信模型 + 喂事实 + fail closed**。
 
 ## 取数
-1. 只用 `facts/snapshots/` 下的冻结快照答题（查询统一用 `python3 scripts/q.py <S-ID> "SQL"`，本机无 sqlite3 CLI）；禁止用记忆里的行业数字，禁止现编。
+1. 只用 `facts/snapshots/` 下的冻结快照答题（查询统一用 `python3 scripts/q.py <S-ID> "SQL"`，不依赖 sqlite3 CLI）；禁止用记忆里的行业数字，禁止现编。
 2. 简报/策略卡中每个数字必须带引用 `[S-<快照ID> <表名>]`；缺引用的数字不允许出现。出稿前必跑 `python3 scripts/check_brief.py`（机器闸，违规不出稿）。
 3. 指标计算一律按 `facts/koujing/` 口径条目；没有口径的指标先建口径条目（templates/koujing-entry.md）再算。
 4. 快照里没有的数据 → 写「缺口：缺什么、从哪导」，不猜不补。

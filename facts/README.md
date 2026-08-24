@@ -5,4 +5,4 @@
 - 查快照用 `python3 scripts/q.py <S-ID> "SQL"`（或 `--tables` 列表）。
 - 答题只引用冻结快照，禁止直接引用 inbox 或 facts.db（会被下次导入覆盖）。
 - 指标口径：`facts/koujing/` 一指标一文件；口径变更必须升版本并留变更记录。
-- 源企划文档（pptx/pdf）：本机 `data/raw → ~/others` 符号链接，仅本机参考，不入 git。
+- 源企划文档（pptx/pdf）：放 `data/raw/`（本地目录或符号链接），仅本地参考，不入 git。

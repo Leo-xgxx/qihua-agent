@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""查快照（本机无 sqlite3 CLI，统一用本脚本，只读打开）。
+"""查快照（不依赖 sqlite3 CLI，统一用本脚本，只读打开）。
 
 用法:
   python3 scripts/q.py <S-ID|db路径> "SQL" [更多SQL...]

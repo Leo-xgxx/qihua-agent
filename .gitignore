@@ -1,4 +1,4 @@
-# 业务数据一律不入 git（品牌方经营数据；且源 pptx 单文件 91MB 超 GitHub 建议上限）
+# 业务数据一律不入 git（业务经营数据；且源 pptx 单文件 91MB 超 GitHub 建议上限）
 # 规则：data/ 下只放行各级 README.md（目录骨架+说明可见），其余全部忽略
 data/**
 !data/**/
