@@ -18,7 +18,7 @@ AI 负责 **数据 → 证据 → 机会 → 候选策略 → 事后验证** 的
 
 1. 每周把平台导出的 CSV 放进 `data/inbox/<来源>/`（如 `douyin/` `tmall/` `erp/` `reviews/`）
 2. `python3 scripts/snapshot.py --freeze` → 导入 `facts/facts.db` 并冻结快照 `facts/snapshots/S-YYYYMMDD.db`
-3. 在仓库根目录起 Claude Code，按 `questions/questions.md` 答题，产出写进 `briefs/<季>/`
+3. 在仓库根目录起 Claude Code，按 `questions/questions.md` 答题，产出写进 `briefs/<季>/`；出稿前跑 `python3 scripts/check_brief.py`
 
 ## 数据卫生
 
